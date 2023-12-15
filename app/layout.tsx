@@ -1,3 +1,4 @@
+import { ThemeProvider } from '@/components/providers/theme-provider'
 import type { Metadata } from 'next'
 import { Plus_Jakarta_Sans as PlusJakartaSans } from 'next/font/google'
 import './globals.css'
@@ -30,7 +31,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={jakartaFont.className}>{children}</body>
+      <body className={jakartaFont.className}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+          storageKey="jotion-theme-2"
+        >
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   )
 }
